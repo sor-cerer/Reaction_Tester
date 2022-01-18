@@ -1,0 +1,69 @@
+atricle {
+    width: 800px;
+    margin:5px auto;
+    padding:auto;
+}
+
+p{
+    font-size:x-large;
+}
+#submit{
+    border-radius: 2px;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: none;
+    background-color: #4d90fe;
+    border: 1px solid #3079ed;
+    color: #fff;
+    margin: 10px 55%;
+    padding :10px ;
+    width:220px;
+        }
+#submit:focus{
+    outline: rgba(0,0,0,0) 0;
+    box-shadow: inset 0 0 0 1px #fff;
+    border: 1px solid #fff;
+    border: rgba(0,0,0,0) solid 1px;
+    outline: rgba(0,0,0,0) 0;
+            }
+#submit:hover{
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 30%);
+    background: #357ae8;
+    border: 1px solid #2f5bb7;
+    border-top: 1px solid #2f5bb7;
+            }
+
+#topbar{
+    display:grid;
+    grid-row-gap: 10px;
+    grid-template-columns: 50% 50% ;
+    width : 98%;
+    background-image: linear-gradient(to bottom ,#5E316B,black);
+    position: relative;
+    top:-3px ;
+}
+.inbar{
+    display:grid;
+    grid-column-gap:4px;
+    grid-row-gap: 5px;
+    grid-template-columns: 16% 16% 16% 16% 16% 16% ;
+    width : 98%;
+    text-align: right;
+
+}
+
+#topbar a{
+    text-decoration: none;
+    font-weight: normal;
+    font-size:x-small;
+    color:white
+}
+
+#topbar a:hover{
+text-transform:capitalize;
+font-weight: bolder;
+font-size: 80%;
+}

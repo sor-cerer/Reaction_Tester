@@ -1,0 +1,53 @@
+#cointainer .in{
+    background-image: linear-gradient(to bottom ,#4F1E89, #3b146c,#270a4a,#16032c);
+    width:auto;
+    padding : 2px ;
+    margin:2px;
+}
+
+#navbar div{
+    margin-top: 0px ;
+}
+#cointainer .in a{
+    all: initial;
+    padding : 2px 2px ;
+    margin:5px 0px;
+    color:white;
+    text-decoration: none
+}
+#cointainer a:hover{
+    text-transform:capitalize;
+    text-decoration: underline ;
+    font-size:medium;
+}
+
+article{
+    background:#C8C8FF;
+    background-image: linear-gradient(to bottom,white ,#9a9add,#C8C8FF);
+    margin:2%;
+    padding:2%;
+    height: max-content;
+ }
+
+.article{
+    display:grid;
+    grid-column-gap:10px;
+    grid-row-gap: 10px;
+    grid-template-columns: 45% 45% ;
+    width : auto;
+    height: auto;
+    margin:none;
+ }
+
+ .article ul li{
+    color:black;
+ }
+
+ #cointainer p, #cointainer ul, h4, h2, h1,h3 , h6  {
+     color: white;
+ }  
+ #bg{
+    background: url("/static/dj.png") 25% 0 no-repeat fixed;
+    height:100px;
+ }
+

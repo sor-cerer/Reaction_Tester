@@ -1,0 +1,83 @@
+html, body {
+    min-height: 100vh ;
+    padding-top: 0px;
+    margin-top: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-image: linear-gradient(to bottom ,#b081e9, #56377b,#683E55);
+}
+
+
+#cointainer{
+    padding: 0px 30px;
+    margin: 0px auto ;
+    align-content: center;
+    height: fit-content;
+}
+
+header{
+    height:30px ;
+    width:100%;
+    margin:0px 3px 3px 3px;
+    padding:2px;
+    background-color:black;
+}
+#navbar{
+    width:100%;
+}
+
+#navbar #lol{
+    width:85%;
+    margin:auto;
+    padding:auto;
+    position:relative;
+    top:-22px;
+    font-size: 65%;
+}
+
+.grid{
+    display:grid;
+    grid-column-gap:10px;
+    grid-row-gap: 5px;
+    grid-template-columns: 220px auto auto auto auto auto auto ;
+    width : auto;
+    margin:none;
+}
+.grid a, .grids a{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size:x-small;
+}
+
+.grid a:hover, .grids a:hover{
+text-decoration: underline;
+font-weight: bolder;
+font-size: medium;
+
+}
+
+footer{
+    width:99%;
+    margin: 7px 0px 0px 0px;
+    padding: 20px 5px 30px 5px;
+    background-image: linear-gradient(to bottom ,rgb(8, 8, 8),black );
+}
+ 
+.grids{
+    display:grid;
+    grid-column-gap:10px;
+    grid-row-gap: 5px;
+    grid-template-columns: 140px 50px 50px 50px 50px 50px 50px;
+    width : auto;
+    margin:none;
+    min-height: 20%; 
+}
+a:active{
+
+    text-decoration: overline;
+    text-shadow: #ffffff;
+	
+}
+
+a:focus{
+    text-decoration: wavy;
+}
