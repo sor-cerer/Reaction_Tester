@@ -1,0 +1,41 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <link href="{% static 'sem5/login.css' %}" rel="stylesheet">
+
+    <h1>Login</h1>
+<div>
+<form action="{% url 'login' %}" method="post" id=form >
+    {% csrf_token %}
+
+    <hr> /
+    <div class="grind" >
+        <p class="grid-item"> Username : </p>
+        <input type="text" name="username" placeholder="Username">
+    </div>
+
+    <div class="grind" >
+        <p class="grid-item"> Password : </p>
+        <input type="password" name="password" placeholder="password">
+    </div>
+
+    
+
+    <div class="flex">
+        <input type="submit" value="login" style="line-height:100%;height:30px;min-width:120px" id="submit">
+    </div>
+</form>
+
+<p style="text-align: center;"> Not a registed user || <a href=" ">sign-up</a> now </p>
+<br />
+<hr />
+<br/> <br /> <br />
+{% if message %}
+    <div style="color:white; font-size: larger ; text-align: center;">{{ message }}</div>
+    {% endif %}
+
+</div>
+    
+<div id="filler"></div>
+{% endblock %}

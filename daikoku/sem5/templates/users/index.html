@@ -1,0 +1,110 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    <link href="{% static 'sem5/index.css' %}" rel="stylesheet">
+
+    <div class="in" style="position: relative; left: 82%; width:160px; ">
+       <a href="{% url 'register' %} "> register</a> <b style="color:white " > /</b>
+       <a href="{% url 'login' %} ">login </a>
+    </div>
+
+    <div class="in" >  
+        <h1 style="text-align: center;padding:0px ; margin:0%;">Project Presentation</h1>
+        <h3 style="padding:0px ; margin:0%; text-align:center;"> RCET, Bhilai</h3>
+    </div>
+
+    <div>
+        <h2>ABOUT..</h2>
+        <img src={% static "d.jfif" %} style="float:right; width: 500px;margin-left: 100px;">
+            <p>
+                
+                On this game, you can test your reaction speed by clinking the appearing object on the 
+                screen and check your reaction speed, and see if you score above the Human Benchmark score,
+
+                <br />
+                <h4>What U can do in this web-app </h4>
+                <br />
+                <ul>
+                    <li> You can play this game </li>
+                    <li> Keep record of all your sucessfull attempts </li> 
+                    <li> Get your average score for each round </li>
+                    <li> Get your overall average score of all time </li>
+                    <li> Global Scoreboard</li>
+                </ul>
+                <br />
+                
+            </p>
+                <h4>  Why web-app instead of Native app..</h4>
+                    <p>
+                        Web Apps: Web Apps can be accessed through the mobile device’s Web browser, Web
+                         Apps are based on internet-enabled applications. In order to access we don’t need 
+                         to download and install the app onto a mobile device.<br />
+                    </p>
+
+                    <p>
+                        The app is developed as web pages in HTML and CSS, interactive parts are developed 
+                        in JQuery, JavaScript, or similar language. The single web app can be used on most 
+                        devices capable of surfing the web, it does not depend upon the operating system 
+                        they use.<br />
+                    </p>
+
+                    <p>
+                        So, i guess it would be pretty clear why we opt for web apps instead of native apps, 
+                        for faster and wider reach, <br />
+                    </p>
+
+                    <p>
+                        In fact in studio labs report,Progressive web apps—PWAs—have entered the market and 
+                        are here to stay. According to research firm Gartner, PWAs will replace 50% of general-purpose 
+                        consumer-facing native apps by 2020. PWAs are inherently mobile app experiences delivered via 
+                        web browsers.<br />
+                    </p>
+
+                    <div id="bg"> 
+                    </div>
+
+
+                    <b>
+                        <p> <b>
+                        but nothing in world is so inevitable, like with power comes responsibility, with pros comes 
+                        cons, lets have a quick glance over them. </b>
+                        </p>
+                    </b>
+                    
+                    <div  class="article"> 
+                        <article>
+                            <h5  style="text-align: center;" >Advantages of Web Apps</h5>
+                            <ul>
+                                <li>Web apps function in-browser, so we do not need to be installed or downloaded.</li>
+                                <li>Web apps are easy to maintain, as they have a common codebase regardless of the operating system.</li>
+                                <li>These apps can be set to update themselves or automatically.</li>
+                                <li>In Web Apps App store approval is not required, so web apps can be launched easily.</li>
+                            </ul>        
+                        </article>
+
+                        <article >
+                            <h5  style="text-align: center;" >Disadvantages of web-apps</h5>
+                                <ul>
+                                    <li>Web Apps do not work without an internet connection.</li>
+                                    <li>Web apps work slower than mobile apps.</li>
+                                    <li>It is difficult to discover web apps </li>
+                                    <li>Web apps have higher risks,</li> 
+                                    <li>There is no guarantee of security since web apps don’t need to be approved by the app stores.</li>
+                                </ul>
+                                <br />
+                        </article>
+                        <br />
+                    </div>
+                    <p>
+                        The project use a lot of technology such as Django, JavaScript, restFramework, Postman, sqlite etc to know more about it try refering Tech-Stack article of the site,
+                    </p>
+                    <br />
+    </div>
+
+    
+
+
+{% endblock %}

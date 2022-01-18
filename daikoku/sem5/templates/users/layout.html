@@ -1,0 +1,130 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Reaction Test</title>
+	<link rel="icon" type="image/png" href={% static "icon.png" %} style="border-radius:1px;">
+	<link href="{% static 'sem5/layout.css' %}" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+	
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoader',function(){
+
+var start = 0,end =0;
+var best = 10000, sum=0, i=0, timeTaken=0;
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+                        }
+    return color;
+  }
+
+
+  function delay(){
+    setTimeout(makeShapeAppear,Math.random()*2000 ) ;
+    
+}
+function makeShapeAppear(){
+    document.getElementById("playarea").style.width = "90%" ;
+    start = new Date().getTime();
+}
+
+function update(){
+    document.getElementById("ls").innerHTML = "Last Score : : " + timeTaken + " sec.";
+    document.getElementById("bs").innerHTML = "Best Score : " + best + " sec.";   
+    document.getElementById("as").innerHTML = "Avg. Score : " + sum/i + " sec.";
+}
+
+
+document.getElementById("start").onclick = function(){            
+    document.getElementById("start").style.display ="none" ;
+    document.getElementById("playarea").style.backgroundColor = getRandomColor() ;
+    document.getElementById("playarea").style.width = "0%" ; 
+    delay();
+    }
+
+document.getElementById("playarea").onclick = function(){
+        if(i>=6){
+            alert("Well done, Round finished!");
+            update();
+            document.getElementById("playarea").style.width = "0%" ;
+            i = 0;
+            document.getElementById("start").style.display ="block" ;
+            document.getElementById("start").innerText = "Play Again"
+        }
+        else{
+            end = new Date().getTime();
+            timeTaken = (end - start)/1000;
+            alert( timeTaken + "sec.")
+            document.getElementById("playarea").style.width = "0%" ; 
+            if ( timeTaken < best ){
+                best = timeTaken ;
+            }
+            sum = sum + timeTaken ;
+            i++ ;
+            document.getElementById("playarea").style.backgroundColor = getRandomColor() ;
+            delay();
+        } 
+    }
+});
+    </script>
+</head>
+
+
+<body>
+	
+		<header>
+			<nav id="navbar">
+				<div>	
+					<a href="{% url 'index' %} "> <img src={% static "icon3.jfif" %} role="link" style="height : 25px"> </a>
+					<div id="lol" class="grid">
+						<a href="" type="hidden"> </a>
+						<a href=""> Tech Stack </a>
+						<a href=""> About Team </a>
+						<a href=""> Acknowledgement </a>
+						<a href=""> Bibilography </a>
+						<a href="">	Game-Guide </a>
+						<a href=""> Contact-Details </a>
+					</div>
+				</div>
+			</nav>
+		</header>
+	<div id=cointainer>
+		{% block body %}
+		{% endblock %}
+	</div>
+		<footer>
+			<div id="footer">
+				<div class="grids" >
+					<a href=" " >Stay Connected</a>
+					<a href=" " ><img src={% static "fb.png" %} role="link" style="height : 25px"></a>
+					<a href=" " ><img src={% static "ig.png" %} role="link" style="height : 25px"></a>
+					<a href=" " ><img src={% static "yt.png" %} role="link" style="height : 25px"></a>
+					<a href=" " ><img src={% static "twitter.png" %} role="link" style="height : 25px"></a>
+					<a href=" " ><img src={% static "reddit.png" %} role="link" style="height : 25px"></a>
+					<a href=" " ><img src={% static "in.png" %} role="link" style="height : 25px"></a>
+				</div>
+				<hr>	
+				<div class="grid">
+					<a href=" ">Tech-Stack </a>
+					<a href=" ">University </a>
+					<a href="">College</a>
+					<a href="">Team </a>
+					<a href="" >Term of Use </a>
+					<a href=" " >Contact Details </a>
+				</div>
+			</div>
+		</footer>
+	
+</body>
+
+
+</html>

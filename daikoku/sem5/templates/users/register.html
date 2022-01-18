@@ -1,0 +1,22 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+{% block body %}
+<link href="{% static 'sem5/register.css' %}" rel="stylesheet">
+
+
+<div id="mate">
+    <form method="POST" class="form-group" id="mat"  >
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button  type="submit"class="btn btn-success" > Register </button>
+    </form>
+</div>
+
+    {% if message %}
+    <div style="color:white; font-size: larger; text-align: center ;">{{ message }}</div>
+    {% endif %}
+</br >
+
+{% endblock %}

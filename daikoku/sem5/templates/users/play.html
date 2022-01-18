@@ -1,0 +1,127 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+<link href="{% static 'sem5/welcome.css' %}" rel="stylesheet">
+<link href="{% static 'sem5/play.css' %}" rel="stylesheet">
+
+
+<div id="topbar" style="height: 15px;">
+    <div class="inbar">
+        <a href="{% url 'welcome' %} "> home </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+
+    </div>
+    <div class="inbar">
+        
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="{% url 'play' %} " > play </a>
+        <a href="{% url 'profile' %} " > profile </a>
+        <a href="{% url 'logout' %}" > logout </a>
+    </div>
+</div>
+
+
+<h2 style="color: white ;"> Warm up </h2>
+    <h4 style="color: white ;"> The white box you see below is called play area and all the reaction 
+        test will be taken in that particular dilaog box only, </h4>
+    <p style=" font-size: small; margin-top:0px; position: relative; top: -20px;">....[ NOTE :- make sure to finish the round else it  will be flagged as incompleate and discarded from the record ]....</p>
+    <div class="bottombar" > 
+        <div class="binbar">
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="ls"> last-score :  </b>
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="bs"> Best-Score :  </b>
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="as"> Avg-score :  </b>
+        </div>
+        <br />
+    </div>
+    <div id="playarea">
+    </div>
+
+    <button id="start" style="margin:auto;" > <b > PLAY  </b> </button>
+
+    <form action="">
+        <button id="nextlvl" style="display:none ; margin:auto;" > <b > Next Level  </b> </button>
+    </form>
+
+    <p style="color: rgb(216, 226, 17) ;"> <b> Warm-up Round : </b>In this round you have to click on play area as
+         soon as it changes the color, click on play button to start : </p>
+
+    <script type="text/javascript">
+	var start = 0,end =0;
+	var best = 10000, sum=0, i=0, timeTaken=0,j=0,n=0;
+	
+	function getRandomColor() {
+		var letters = '0123456789ABCDEF';
+		var color = '#';
+		for (var i = 0; i < 6; i++) {
+					color += letters[Math.floor(Math.random() * 16)];
+							}
+		return color;
+	  }
+	
+	
+      function delay(){
+        setTimeout(makeShapeAppear,Math.random()*2000 ) ;
+        
+    }
+    function makeShapeAppear(){
+        document.getElementById("playarea").style.width = "90%" ;
+        start = new Date().getTime();
+    }
+	
+	function update(){
+		document.getElementById("ls").innerHTML = "Last Score : : " + timeTaken + " sec.";
+		document.getElementById("bs").innerHTML = "Best Score : " + best + " sec.";   
+		document.getElementById("as").innerHTML = "Avg. Score : " + n + " sec.";
+	}
+	
+	
+	document.getElementById("start").onclick = function(){         
+        j++ ;   
+		document.getElementById("start").style.display ="none" ;
+		document.getElementById("playarea").style.backgroundColor = getRandomColor() ;
+        document.getElementById("playarea").style.width = "0%" ; 
+        delay();
+		}
+	
+	document.getElementById("playarea").onclick = function(){
+            if(i>=6){
+				alert("Well done, Round finished!");
+                avg = sum/i ;
+                n = avg.toFixed(2) ;
+                update();
+                document.getElementById("playarea").style.width = "0%" ;
+				i = 0;j=0 ;
+                document.getElementById("start").style.display ="block" ;
+                document.getElementById("start").innerText = "Play Again";
+                document.getElementById("nextlvl").style.display = "block" ;
+			}
+			else if(j > 0){
+				end = new Date().getTime();
+				timeTaken = (end - start)/1000;
+				document.getElementById("playarea").style.width = "0%" ; 
+				if ( timeTaken < best ){
+					best = timeTaken ;
+				}
+				sum = sum + timeTaken ;
+				i++ ;
+                document.getElementById("playarea").style.backgroundColor = getRandomColor() ;
+                delay(); 
+			}
+			else{
+				alert("click on start button to play");
+			}
+		}
+       
+    
+    </script>
+         
+{% endblock %}

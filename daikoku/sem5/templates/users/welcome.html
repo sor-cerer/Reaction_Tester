@@ -1,0 +1,60 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+
+
+{% block body %}
+    
+<link href="{% static 'sem5/welcome.css' %}" rel="stylesheet">
+
+<div id="topbar" style="height: 15px;">
+    <div class="inbar">
+        <a href=" {% url 'welcome' %} "> home </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href=" " type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+
+    </div>
+    <div class="inbar">
+        
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="{% url 'play' %} " > play </a>
+        <a href="{% url 'profile' %} " > profile </a>
+        <a href="{% url 'logout' %}" > logout </a>
+    </div>
+</div>
+
+<h1 style="color: white ;">Welcome, {{ request.user.first_name }} </h1>
+
+<h5 style="color: white ;" > This is sample game page, to give genral idea about the reaction test with a prilimanary test just to 
+    warm you up you can play and continue to game or skip direcly into game via play button on top right </h5>
+
+<div  class="article"> 
+    <article>
+        <h2 style="color: white ;"> About the test </h2>
+        <img src={% static "hb.png" %} style="float:right; width:300px ; background-color: white; margin: 15px 280px 5px 30px; padding: 10px; " >
+        <p style="color: white ;">
+            <br />
+            This is a simple tool to measure your reaction time. The average (median) reaction time is 
+            273 milliseconds, according to the data collected so far. In addition to measuring your 
+            reaction time, this test is affected by the latency of your computer and monitor. Using a 
+            fast computer and low latency / high framerate monitor will improve your score. Scores in this 
+            test are faster than the aim trainer test, because you can react instantly without moving the 
+            cursor.
+            <br /> <br />
+            While an average human reaction time may fall between 200-250ms, your computer could be adding
+            10-50ms on top. Some modern TVs add as much as 150ms!
+            <br /> <br />
+            If you want, you can keep track of your scores, and see your full history of reaction times.
+            Just perform the compleate rounds.
+        </p>      
+    </article>
+    <form action=" {% url 'play' %} ">
+        <button Type="submit" id="submit" > Continue... </button>
+    </form>
+
+{% endblock %}

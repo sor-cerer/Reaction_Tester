@@ -1,0 +1,141 @@
+{% extends "users/layout.html" %}
+{% load static %}
+
+{% block body %}
+<link href="{% static 'sem5/welcome.css' %}" rel="stylesheet">
+<link href="{% static 'sem5/lvl.css' %}" rel="stylesheet">
+
+
+<div id="topbar" style="height: 15px;">
+    <div class="inbar">
+        <a href="{% url 'welcome' %} "> home </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+
+    </div>
+    <div class="inbar">
+        
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="" type="hidden"> </a>
+        <a href="{% url 'play' %} " > play </a>
+        <a href="{% url 'profile' %} " > profile </a>
+        <a href="{% url 'logout' %}" > logout </a>
+    </div>
+</div>
+
+
+<h2 style="color: white ;"> Warm up </h2>
+    <h4 style="color: white ;"> The white box you see below is called play area and all the reaction 
+        test will be taken in that particular dilaog box only, </h4>
+    <p style=" font-size: small; margin-top:0px; position: relative; top: -20px;">....[ NOTE :- make sure to finish the round else it  will be flagged as incompleate and discarded from the record ]....</p>
+    <div class="bottombar" > 
+        <div class="binbar">
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="ls"> last-score :  </b>
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="bs"> Best-Score :  </b>
+            <b style="width: 50%;  padding: 5px 20px; margin: 5px 20px; font-size: large" id="as"> Avg-score :  </b>
+        </div>
+        <br />
+    </div>
+    <div id="playarea">
+        <div id="shape"> </div>
+    </div>
+    <br />
+
+    <button id="start" style="margin:auto;" > <b > PLAY  </b> </button>
+
+    <form action=" {% url 'lvl' %} ">
+    </form>
+
+    
+    <button id="nextlvl" style="display:none ; margin:auto;" > <b > Next Level  </b> </button>
+
+    <p style="color: rgb(216, 226, 17) ;"> <b> Warm-up Round : </b>In this round you have to click on play area as
+         soon as it changes the color, click on play button to start : </p>
+
+    <script>
+        var start = 0,end =0;
+	    var best = 10000, sum=0, i=0, timeTaken=0,n=0, avg=0 ;
+
+    function update(){
+		document.getElementById("ls").innerHTML = "Last Score : : " + timeTaken + " sec.";
+		document.getElementById("bs").innerHTML = "Best Score : " + best + " sec.";   
+		document.getElementById("as").innerHTML = "Avg. Score : " + n + " sec.";
+	}
+        
+        function getRandomColor() {
+			var letters = '0123456789ABCDEF';
+			var color = '#';
+			for (var i = 0; i < 6; i++) {
+				color += letters[Math.floor(Math.random() * 16)];
+			}
+			return color;
+		}
+
+        function makeShapeAppear(){
+			
+            var top = Math.random()*350, left = Math.random()* 650 ;
+            var width = Math.random()*500;
+   
+            document.getElementById("shape").style.borderRadius = width/2+"px";
+                
+            document.getElementById("shape").style.backgroundColor = getRandomColor();
+                
+            document.getElementById("shape").style.height = width+"px";
+            document.getElementById("shape").style.width =	width+"px";
+                
+            document.getElementById("shape").style.top = top+"px";
+            document.getElementById("shape").style.left =	left+"px";								 
+            document.getElementById("shape").style.display = "block";
+            start = new Date().getTime();
+        }
+
+        function delay(){
+			setTimeout(makeShapeAppear,Math.random()*2000 ) ;
+		}		  
+						  
+		document.getElementById("shape").onclick = function()
+		{
+            if(i >= 11){
+                document.getElementById("shape").style.display = "none";
+                document.getElementById("start").style.display ="block" ;
+                document.getElementById("start").innerText = "Play Again";
+                document.getElementById("nextlvl").style.display = "block" ;
+                avg = sum/i ;
+                n = avg.toFixed(2) ;
+                update();
+                alert("Well done, Round Finshied")
+                i = 0 ;
+            }
+            else if(i<11){
+                var end = new Date().getTime();
+                timeTaken = (end - start)/1000;
+                document.getElementById("shape").style.display = "none";
+                if ( timeTaken < best ){
+					best = timeTaken ;
+				}
+				sum = sum + timeTaken ;
+				i++ ;
+                delay();
+            }
+            else{
+                alert("Unexpected error occured, please refresh the page") ;
+            }
+		
+		}
+
+        document.getElementById("start").onclick = function(){
+            document.getElementById("start").style.display ="none" ;
+            alert("round started!")
+            delay();
+            
+        }
+        document.getElementById("nextlvl").onclick = function(){
+        alert("coming soon.....")
+    }
+    </script>
+         
+{% endblock %}

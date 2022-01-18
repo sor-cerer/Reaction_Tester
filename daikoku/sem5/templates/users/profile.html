@@ -1,0 +1,42 @@
+{% extends "users/layout.html" %}
+{% load static %}
+ 
+{% block body %}
+    <link href="{% static 'sem5/welcome.css' %}" rel="stylesheet">
+    <link href="{% static 'sem5/profile.css' %}" rel="stylesheet">
+
+
+    <div id="topbar" style="height: 15px;">
+        <div class="inbar">
+            <a href="{% url 'welcome' %} "> home </a>
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+
+        </div>
+        <div class="inbar">
+            
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+            <a href="" type="hidden"> </a>
+            <a href="{% url 'play' %} " > play </a>
+            <a href="{% url 'profile' %} " > profile </a>
+            <a href="{% url 'logout' %}" > logout </a>
+        </div>
+    </div>
+
+    <h1>Welcome, {{ request.user.first_name }} </h1>
+
+    <div>
+        <ul>
+            
+            <li>Name : {{request.user.first_name}} {{request.user.last_name}}  </li>
+            <li>Username : {{ request.user.username }} </li>
+            <li>Email : {{request.user.email}} </li>
+        </ul>
+    </div>
+
+
+{% endblock %}
